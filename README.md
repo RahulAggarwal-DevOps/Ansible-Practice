@@ -41,7 +41,7 @@ $ ansible-playbook <playbook_file.yml>
 
 Ansible Galaxy is very similar to Helm Charts we use in Kubernetes. Galaxy contains roles to configure any infrastructure. Roles are nothing but a folder that contain files to conveniently arrange our playbook's content. For example, if you want to configure your hosts with Nginx, you can use Nginx role available in the Ansible Galaxy Collection as below:
 ~~~
-$ ansible-galaxy collection install nginxinc_nginx_core
+$ ansible-galaxy collection install nginxinc.nginx_core
 ~~~
 You will find Nginx role installed at /etc/ansible/roles/. 
 
