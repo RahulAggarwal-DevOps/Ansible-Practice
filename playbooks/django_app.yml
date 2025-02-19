@@ -1,0 +1,43 @@
+-
+
+  name: Install Docker, Docker-Compose, Git, clone a git repo, and deploy Django app using docker-compose
+  hosts: UbuntuServers
+  become: yes
+  vars:
+    git_url: https://github.com/LondheShubham153/django-notes-app.git
+    project_path: /home/ubuntu/django-notes-app
+  tasks:
+    - name: Update the system
+      ansible.builtin.apt: # ansible builtin for apt commands
+        update-cache: yes # same as apt-get update
+    - name: Install Docker
+      ansible.builtin.apt:
+        name: docker.io
+        state: latest
+    - name: Install Git
+      ansible.builtin.apt:
+        name: git
+        state: latest
+    - name: Install Docker Compose
+      ansible.builtin.apt:
+        name: docker-compose-v2
+        state: latest
+    - name: Enable Docker on every reboot
+      ansible.builtin.service: # ansible service builtin
+        name: docker
+        state: started # start the service
+        enabled: yes # reload the service on every reboot
+    - name: Git clone the Django project
+      ansible.builtin.git:
+        clone: true
+        repo: "{{ git_url }}"
+        version: main
+        dest: "{{ project_path }}"
+    - name: Run Django Application using Docker Compose
+      ansible.builtin.command:   # or simply write "command"
+        cmd: docker compose up -d
+        chdir: "{{ project_path }}"
+    - name: Verify that the containers are running
+      ansible.builtin.command:   # or simply write "command: "
+        cmd: docker ps
+        chdir: "{{ project_path }}"

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+        }
+        h1 {
+            color: #4e4e4e;
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        p {
+            font-size: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .highlight {
+            color: #ff6347;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to My Static Webpage!</h1>
+        <p>I am a static webpage, deployed via <span class="highlight">Nginx</span>, and configured via <span class="highlight">Ansible Playbook...</span>.</p>
+    </div>
+
+</body>
+</html>
+

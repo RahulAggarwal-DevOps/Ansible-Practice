@@ -1,0 +1,7 @@
+-
+
+  name: Install Nginx and Deploy a Webpage
+  hosts: UbuntuServers
+  become: yes
+  roles:
+    - Nginx

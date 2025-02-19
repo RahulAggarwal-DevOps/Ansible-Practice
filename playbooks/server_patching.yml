@@ -1,0 +1,15 @@
+-
+
+  name: Server Update, Upgrade, and Reboot
+  become: yes
+  hosts: UbuntuServers
+  tasks:
+    - name: Server Update and Upgrade
+      ansible.builtin.apt: # ansible builtin for apt commands
+        update-cache: yes # same as apt-get update
+        upgrade: dist # same as apt-get dist-upgrade, can be 'full' for apt-get full-upgrade
+      when: ansible_distribution == 'Ubuntu'
+    - name: Reboot
+      ansible.builtin.reboot:
+        msg: "Server Patching in progress - Reboot initiated by Ansible"
+      when: ansible_distribution == 'Ubuntu'

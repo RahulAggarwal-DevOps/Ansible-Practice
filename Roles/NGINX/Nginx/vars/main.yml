@@ -1,0 +1,5 @@
+---
+# vars file for Nginx
+
+    local_file: /etc/ansible/roles/Nginx/files/index.html
+    remote_file: /var/www/html/index.html

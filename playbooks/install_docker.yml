@@ -1,0 +1,18 @@
+-
+
+  name: Install Docker
+  hosts: UbuntuServers
+  become: yes
+  tasks:
+    - name: Update the system
+      ansible.builtin.apt: # ansible builtin for apt commands
+        update-cache: yes # same as apt-get update
+    - name: Install Docker
+      ansible.builtin.apt:
+        name: docker.io
+        state: latest
+    - name: Enable Docker on every reboot
+      ansible.builtin.service: # ansible service builtin
+        name: docker
+        state: started # start the service
+        enabled: yes # reload the service on every reboot

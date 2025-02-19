@@ -1,0 +1,21 @@
+---
+# tasks file for Nginx
+
+  - name: Update the system
+    ansible.builtin.apt: # ansible builtin for apt commands
+      update-cache: yes # same as apt-get update
+  - name: Install Nginx
+    ansible.builtin.apt:
+      name: nginx
+      state: latest
+  - name: Enable Nginx on every reboot
+    ansible.builtin.service: # ansible service builtin
+      name: nginx
+      state: started # start the service
+      enabled: yes # reload the service on every reboot
+  - name: Deploy Webpage via Nginx
+    ansible.builtin.copy:
+      src: "{{ local_file }}"
+      dest: "{{ remote_file }}"
+      force: true
+

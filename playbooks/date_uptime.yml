@@ -1,0 +1,12 @@
+-
+
+  name: Display Date and Uptime Playbook
+  hosts: UbuntuServers
+  become: yes
+  tasks:
+    - name: Display Date
+      command: date
+      when: ansible_distribution == 'Ubuntu'
+    - name: Display Uptime
+      command: uptime
+      when: ansible_distribution == 'Ubuntu'
